@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "dev-kit"
+name = "python-dev-kit"
 version = "0.1.0"
-description = "Streamlined repository for storing essential backend development configurations, utilities, and documentation for personal projects."
+description = "Streamlined repository for storing essential backend development configurations, utilities, and documentation for personal python projects."
 authors = ["alihezarpisheh <alihezarpisheh@outlook.com>"]
 license = "MIT"
 readme = "README.md"
