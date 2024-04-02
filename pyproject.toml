@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "dev-kit"
+version = "0.1.0"
+description = "Streamlined repository for storing essential backend development configurations, utilities, and documentation for personal projects."
+authors = ["alihezarpisheh <alihezarpisheh@outlook.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
