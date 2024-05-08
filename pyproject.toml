@@ -5,6 +5,7 @@ description = "Streamlined repository for storing essential backend development 
 authors = ["alihezarpisheh <alihezarpisheh@outlook.com>"]
 license = "MIT"
 readme = "README.md"
+package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.10"
@@ -23,6 +24,8 @@ tomlkit = "^0.12.4"
 sqlalchemy = "^2.0.29"
 alembic = "^1.13.1"
 psycopg2-binary = "^2.9.9"
+tox = "^4.15.0"
+pandas = "^2.2.2"
 
 
 [build-system]
@@ -67,6 +70,8 @@ include_trailing_comma = true
 strict = true
 ignore_missing_imports = true
 
+exclude = "tests/"
+
 
 [tool.pytest.ini_options]
 addopts = [
@@ -93,7 +98,5 @@ xfail_strict = true
 [tool.coverage.run]
 parallel = true
 source = [
-    "config",
     "toolkit",
-    "src",
 ]
