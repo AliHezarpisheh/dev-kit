@@ -1,9 +1,9 @@
 # Sample loggin configuration.
 version = 1
-disable_existing_loggers = false
+disable_existing_loggers = true
 
 [formatters.coreFormatter]
-format = "%(asctime)s - %(levelname)s - Thread: %(thread)d - Process: %(process)d - %(name)s - %(message)s"
+format = "%(asctime)s - [%(levelname)s] - %(name)s - %(lineno)d - %(message)s - Thread: %(thread)d - Process: %(process)d"
 datefmt = "%Y-%m-%d %H:%M:%S"
 
 [handlers.coreHandler]
