@@ -1,0 +1,1450 @@
+# Example for an OpenAPI Document.
+# This is just an example and it is not an implemented service.
+
+openapi: 3.0.0
+info:
+  title: VC Conductor Service
+  version: 1.0.0
+  description: |
+    *Conducts and manages the creation of conferences.*</br></br>
+  contact:
+    name: API Support
+    url: https://example.com
+    email: alihezarpisheh@outlook.com
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+externalDocs:
+  description: Documentation for API requirements is available here
+  url: https://example.com
+servers:
+  - url: ''
+    description: Development Server
+  - url: ''
+    description: Staging Server
+  - url: ''
+    description: Production Server
+tags:
+  - name: Assignments
+    description: Endpoints related to conference assignments.
+  - name: Customization
+    description: Endpoints allowing customization and extension of assignment details with additional fields.
+  - name: State
+    description: Endpoints related to assignment states.
+paths:
+  /v1/profiles/{profile_id}/assignments:
+    post:
+      tags:
+        - Assignments
+      summary: Create Conference Assignment
+      description: |
+        Creates a new conference assignment for the specified profile.
+        For detailed requirements, please refer to [assignment documentation](https://example.com).
+      operationId: CreateConferenceAssignmentV1
+      parameters:
+        - $ref: '#/components/parameters/ProfileId'
+      requestBody:
+        $ref: '#/components/requestBodies/AssignmentRequestBody'
+      responses:
+        '201':
+          $ref: '#/components/responses/AssignmentResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '502':
+          $ref: '#/components/responses/BadGateway'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+        '504':
+          $ref: '#/components/responses/GatewayTimeOut'
+    get:
+      tags:
+        - Assignments
+      summary: Retrieve Conference Assignments
+      description: |
+        Retrieves a list of conference assignments for the specified profile.
+        For detailed requirements, please refer to [assignment documentation](https://example.com).
+      operationId: RetrieveAllConferenceAssignmentsV1
+      parameters:
+        - $ref: '#/components/parameters/ProfileId'
+      responses:
+        '200':
+          $ref: '#/components/responses/AssignmentsListResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '502':
+          $ref: '#/components/responses/BadGateway'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+        '504':
+          $ref: '#/components/responses/GatewayTimeOut'
+  /v1/profiles/{profile_id}/assignments/{assignment_id}:
+    get:
+      tags:
+        - Assignments
+      summary: Retrieves Conference Assignment
+      description: |
+        Retrieve details of a specific conference assignment.
+        For detailed requirements, please refer to [assignment documentation](https://example.com).
+      operationId: RetrieveConferenceAssignmentV1
+      parameters:
+        - $ref: '#/components/parameters/ProfileId'
+        - $ref: '#/components/parameters/AssignmentId'
+      responses:
+        '200':
+          $ref: '#/components/responses/AssignmentResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '502':
+          $ref: '#/components/responses/BadGateway'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+        '504':
+          $ref: '#/components/responses/GatewayTimeOut'
+    patch:
+      tags:
+        - Assignments
+      summary: Modify Conference Assignment
+      description: |
+        Modifies details of a specific conference assignment.
+        For detailed requirements, please refer to [assignment documentation](https://example.com).
+      operationId: ModifyConferenceAssignmentV1
+      parameters:
+        - $ref: '#/components/parameters/ProfileId'
+        - $ref: '#/components/parameters/AssignmentId'
+      requestBody:
+        $ref: '#/components/requestBodies/AssignmentRequestBody'
+      responses:
+        '200':
+          $ref: '#/components/responses/AssignmentResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '502':
+          $ref: '#/components/responses/BadGateway'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+        '504':
+          $ref: '#/components/responses/GatewayTimeOut'
+    delete:
+      tags:
+        - Assignments
+      summary: Delete Conference Assignment
+      description: |
+        Deletes a specific conference assignment.
+        For detailed requirements, please refer to [assignment documentation](https://example.com).
+      operationId: DeleteConferenceAssignmentV1
+      parameters:
+        - $ref: '#/components/parameters/ProfileId'
+        - $ref: '#/components/parameters/AssignmentId'
+      responses:
+        '204':
+          $ref: '#/components/responses/DeletionResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '502':
+          $ref: '#/components/responses/BadGateway'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+        '504':
+          $ref: '#/components/responses/GatewayTimeOut'
+  /v2/profiles/{profile_id}/assignments:
+    post:
+      tags:
+        - Assignments
+      summary: Create Conference Assignment
+      description: |
+        Creates a new conference assignment for the specified profile.
+        For detailed requirements, please refer to [assignment documentation](https://example.com).
+      operationId: CreateConferenceAssignmentV2
+      parameters:
+        - $ref: '#/components/parameters/ProfileId'
+      requestBody:
+        $ref: '#/components/requestBodies/AssignmentRequestBody'
+      responses:
+        '201':
+          $ref: '#/components/responses/AssignmentResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '502':
+          $ref: '#/components/responses/BadGateway'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+        '504':
+          $ref: '#/components/responses/GatewayTimeOut'
+    get:
+      tags:
+        - Assignments
+      summary: Retrieve Conference Assignments
+      description: |
+        Retrieves a list of conference assignments for the specified profile.
+        For detailed requirements, please refer to [assignment documentation](https://example.com).
+      operationId: RetrieveAllConferenceAssignmentsV2
+      parameters:
+        - $ref: '#/components/parameters/ProfileId'
+      responses:
+        '200':
+          $ref: '#/components/responses/AssignmentsListResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '502':
+          $ref: '#/components/responses/BadGateway'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+        '504':
+          $ref: '#/components/responses/GatewayTimeOut'
+  /v2/profiles/{profile_id}/assignments/{assignment_id}:
+    get:
+      tags:
+        - Assignments
+      summary: Retrieves Conference Assignment
+      description: |
+        Retrieve details of a specific conference assignment.
+        For detailed requirements, please refer to [assignment documentation](https://example.com).
+      operationId: RetrieveConferenceAssignmentV2
+      parameters:
+        - $ref: '#/components/parameters/ProfileId'
+        - $ref: '#/components/parameters/AssignmentId'
+      responses:
+        '200':
+          $ref: '#/components/responses/AssignmentResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '502':
+          $ref: '#/components/responses/BadGateway'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+        '504':
+          $ref: '#/components/responses/GatewayTimeOut'
+    patch:
+      tags:
+        - Assignments
+      summary: Modify Conference Assignment
+      description: |
+        Modifies details of a specific conference assignment.
+        For detailed requirements, please refer to [assignment documentation](https://example.com).
+      operationId: ModifyConferenceAssignmentV2
+      parameters:
+        - $ref: '#/components/parameters/ProfileId'
+        - $ref: '#/components/parameters/AssignmentId'
+      requestBody:
+        $ref: '#/components/requestBodies/AssignmentRequestBody'
+      responses:
+        '200':
+          $ref: '#/components/responses/AssignmentResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '502':
+          $ref: '#/components/responses/BadGateway'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+        '504':
+          $ref: '#/components/responses/GatewayTimeOut'
+    delete:
+      tags:
+        - Assignments
+      summary: Delete Conference Assignment
+      description: |
+        Deletes a specific conference assignment.
+        For detailed requirements, please refer to [assignment documentation](https://example.com).
+      operationId: DeleteConferenceAssignmentV2
+      parameters:
+        - $ref: '#/components/parameters/ProfileId'
+        - $ref: '#/components/parameters/AssignmentId'
+      responses:
+        '204':
+          $ref: '#/components/responses/DeletionResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '502':
+          $ref: '#/components/responses/BadGateway'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+        '504':
+          $ref: '#/components/responses/GatewayTimeOut'
+  /v3/profiles/{profile_id}/assignments:
+    post:
+      tags:
+        - Assignments
+      summary: Create Conference Assignment
+      description: |
+        Creates a new conference assignment for the specified profile.
+        For detailed requirements, please refer to [assignment documentation](https://example.com).
+      operationId: CreateConferenceAssignmentV3
+      parameters:
+        - $ref: '#/components/parameters/ProfileId'
+      requestBody:
+        $ref: '#/components/requestBodies/AssignmentRequestBody'
+      responses:
+        '201':
+          $ref: '#/components/responses/AssignmentResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '502':
+          $ref: '#/components/responses/BadGateway'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+        '504':
+          $ref: '#/components/responses/GatewayTimeOut'
+    get:
+      tags:
+        - Assignments
+      summary: Retrieve Conference Assignments
+      description: |
+        Retrieves a list of conference assignments for the specified profile.
+        For detailed requirements, please refer to [assignment documentation](https://example.com).
+      operationId: RetrieveAllConferenceAssignmentsV3
+      parameters:
+        - $ref: '#/components/parameters/ProfileId'
+      responses:
+        '200':
+          $ref: '#/components/responses/AssignmentsListResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '502':
+          $ref: '#/components/responses/BadGateway'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+        '504':
+          $ref: '#/components/responses/GatewayTimeOut'
+  /v3/profiles/{profile_id}/assignments/{assignment_id}:
+    get:
+      tags:
+        - Assignments
+      summary: Retrieve Conference Assignment
+      description: |
+        Retrieve details of a specific conference assignment.
+        For detailed requirements, please refer to [assignment documentation](https://example.com).
+      operationId: RetrieveConferenceAssignmentV3
+      parameters:
+        - $ref: '#/components/parameters/ProfileId'
+        - $ref: '#/components/parameters/AssignmentId'
+      responses:
+        '200':
+          $ref: '#/components/responses/AssignmentResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '502':
+          $ref: '#/components/responses/BadGateway'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+        '504':
+          $ref: '#/components/responses/GatewayTimeOut'
+    patch:
+      tags:
+        - Assignments
+      summary: Modify Conference Assignment
+      description: |
+        Modifies details of a specific conference assignment.
+        For detailed requirements, please refer to [assignment documentation](https://example.com).
+      operationId: ModifyConferenceAssignmentV3
+      parameters:
+        - $ref: '#/components/parameters/ProfileId'
+        - $ref: '#/components/parameters/AssignmentId'
+      requestBody:
+        $ref: '#/components/requestBodies/AssignmentRequestBody'
+      responses:
+        '200':
+          $ref: '#/components/responses/AssignmentResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '502':
+          $ref: '#/components/responses/BadGateway'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+        '504':
+          $ref: '#/components/responses/GatewayTimeOut'
+    delete:
+      tags:
+        - Assignments
+      summary: Delete Conference Assignment
+      description: |
+        Deletes a specific conference assignment.
+        For detailed requirements, please refer to [assignment documentation](https://example.com).
+      operationId: DeleteConferenceAssignmentV3
+      parameters:
+        - $ref: '#/components/parameters/ProfileId'
+        - $ref: '#/components/parameters/AssignmentId'
+      responses:
+        '204':
+          $ref: '#/components/responses/DeletionResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '502':
+          $ref: '#/components/responses/BadGateway'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+        '504':
+          $ref: '#/components/responses/GatewayTimeOut'
+  /v1/profiles/{profile_id}/assignments/{assignment_id}/customfields:
+    post:
+      tags:
+        - Customization
+      summary: Create Conference Assignment Extra fields
+      description: |
+        Creates additional custom fields associated with a specific conference assignment.
+        These custom fields provide extended details beyond the core assignment information.
+        For detailed requirements, please refer to [custom fields documentation](https://example.com).
+      operationId: CreateConferenceAssignmentCustomFieldsV1
+      parameters:
+        - $ref: '#/components/parameters/ProfileId'
+        - $ref: '#/components/parameters/AssignmentId'
+      requestBody:
+        $ref: '#/components/requestBodies/AssignmentCustomFieldsRequestBody'
+      responses:
+        '201':
+          $ref: '#/components/responses/AssignmentsCustomFieldsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '502':
+          $ref: '#/components/responses/BadGateway'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+        '504':
+          $ref: '#/components/responses/GatewayTimeOut'
+    get:
+      tags:
+        - Customization
+      summary: Retrieve Conference Assignment Extra fields
+      description: |
+        Retrieves additional custom fields associated with a specific conference assignment.
+        These custom fields provide extended details beyond the core assignment information.
+        For detailed requirements, please refer to [custom fields documentation](https://example.com).
+      operationId: RetrieveConferenceAssignmentCustomFieldsV1
+      parameters:
+        - $ref: '#/components/parameters/ProfileId'
+        - $ref: '#/components/parameters/AssignmentId'
+      responses:
+        '200':
+          $ref: '#/components/responses/AssignmentsCustomFieldsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '502':
+          $ref: '#/components/responses/BadGateway'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+        '504':
+          $ref: '#/components/responses/GatewayTimeOut'
+    patch:
+      tags:
+        - Customization
+      summary: Modify Conference Assignment Extra fields
+      description: |
+        Modifies additional custom fields associated with a specific conference assignment.
+        These custom fields provide extended details beyond the core assignment information.
+        For detailed requirements, please refer to [custom fields documentation](https://example.com).
+      operationId: ModifyConferenceAssignmentCustomFieldsV1
+      parameters:
+        - $ref: '#/components/parameters/ProfileId'
+        - $ref: '#/components/parameters/AssignmentId'
+      requestBody:
+        $ref: '#/components/requestBodies/AssignmentCustomFieldsRequestBody'
+      responses:
+        '200':
+          $ref: '#/components/responses/AssignmentsCustomFieldsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '502':
+          $ref: '#/components/responses/BadGateway'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+        '504':
+          $ref: '#/components/responses/GatewayTimeOut'
+  /v1/profiles/{profile_id}/assignments/{assignment_id}/state:
+    patch:
+      tags:
+        - State
+      summary: Modify Assignment State
+      description: |
+        Modify state of a specific conference assignment.
+        For detailed requirements, please refer to [assignment state documentation](https://example.com).
+      operationId: ModifyConferenceStateV1
+      parameters:
+        - $ref: '#/components/parameters/ProfileId'
+        - $ref: '#/components/parameters/AssignmentId'
+      requestBody:
+        $ref: '#/components/requestBodies/AssignmentStateRequestBody'
+      responses:
+        '202':
+          $ref: '#/components/responses/AssignmentStateResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '502':
+          $ref: '#/components/responses/BadGateway'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+        '504':
+          $ref: '#/components/responses/GatewayTimeOut'
+  /v2/profiles/{profile_id}/assignments/{assignment_id}/state:
+    patch:
+      tags:
+        - State
+      summary: Modify Assignment State
+      description: |
+        Modify state of a specific conference assignment.
+        For detailed requirements, please refer to [assignment state documentation](https://example.com).
+      operationId: ModifyConferenceStateV2
+      parameters:
+        - $ref: '#/components/parameters/ProfileId'
+        - $ref: '#/components/parameters/AssignmentId'
+      requestBody:
+        $ref: '#/components/requestBodies/AssignmentStateRequestBody'
+      responses:
+        '202':
+          $ref: '#/components/responses/AssignmentStateResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '502':
+          $ref: '#/components/responses/BadGateway'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+        '504':
+          $ref: '#/components/responses/GatewayTimeOut'
+components:
+  schemas:
+    AssignmentRequestBody:
+      title: Assignment Request Body
+      type: object
+      description: Request body for creating a new conference assignment.
+      format: requestBody
+      properties:
+        conference_name:
+          title: Conference Name
+          type: string
+          maxLength: 255
+        conference_description:
+          title: Conference Description
+          type: string
+        support_service:
+          title: Support Service
+          type: boolean
+        record_service:
+          title: Record Service
+          type: boolean
+        date_type:
+          $ref: '#/components/schemas/DateTypeEnum'
+        limit:
+          title: Maximum Participants
+          type: integer
+          minimum: 1
+          maximum: 500000
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+        seat_types:
+          title: Allowed Seat Types
+          type: array
+          items:
+            type: integer
+            enum:
+              - 1
+              - 2
+              - 3
+              - 4
+              - 5
+        start_time:
+          title: Start Time (Unix)
+          type: integer
+        end_time:
+          title: End Time (Unix)
+          type: integer
+        week_days:
+          title: Week Days
+          type: array
+          items:
+            type: integer
+            enum:
+              - 1
+              - 2
+              - 3
+              - 4
+              - 5
+              - 6
+              - 7
+        start_hour:
+          title: Start Hour
+          type: integer
+          minimum: 1
+          maximum: 24
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+        end_hour:
+          title: End Hour
+          type: integer
+          minimum: 1
+          maximum: 24
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+      required:
+        - name
+        - support_service
+        - record_service
+        - date_type
+        - limit
+        - seat_types
+        - start_time
+        - end_time
+    AssignmentResponseData:
+      title: Assignment Response Body
+      type: object
+      description: Response data for a conference assignment.
+      format: Body
+      properties:
+        id:
+          title: Assignment Id
+          type: integer
+          format: ID
+        created_by:
+          title: Creator User Id
+          type: integer
+          format: ID
+        updated_by:
+          title: Modifier User Id
+          type: integer
+          format: ID
+        conference_name:
+          title: Conference Name
+          type: string
+          maxLength: 255
+        conference_description:
+          title: Conference Description
+          type: string
+        support_service:
+          title: Support Service
+          type: boolean
+        record_service:
+          title: Record Service
+          type: boolean
+        date_type:
+          $ref: '#/components/schemas/DateTypeEnum'
+        limit:
+          title: Maximum Participants
+          type: integer
+          minimum: 1
+          maximum: 500000
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+        seat_types:
+          title: Allowed Seat Types
+          type: array
+          items:
+            type: integer
+            enum:
+              - 1
+              - 2
+              - 3
+              - 4
+              - 5
+        start_time:
+          title: Start Time
+          type: integer
+        end_time:
+          title: End Time
+          type: integer
+        week_days:
+          title: Week Days
+          type: array
+          items:
+            type: integer
+            enum:
+              - 1
+              - 2
+              - 3
+              - 4
+              - 5
+              - 6
+              - 7
+        start_hour:
+          title: Start Hour (Unix)
+          type: integer
+          minimum: 1
+          maximum: 24
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+        end_hour:
+          title: End Hour (Unix)
+          type: integer
+          minimum: 1
+          maximum: 24
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+        state:
+          $ref: '#/components/schemas/StateEnum'
+        created_at:
+          title: Creation Time (Unix)
+          type: integer
+        updated_at:
+          title: Modification Time (Unix)
+          type: integer
+    AssignmentResponseBody:
+      title: Single Assignment Response Body
+      type: object
+      description: Response body for a single conference assignment operation.
+      format: Body
+      properties:
+        status:
+          title: Status
+          type: string
+          maxLength: 100
+          example: success
+        message:
+          title: Response Message
+          type: string
+          maxLength: 1000
+          example: Successful Operation.
+        data:
+          $ref: '#/components/schemas/AssignmentResponseData'
+        links:
+          type: object
+          example:
+            self: /assignments/213094
+      required:
+        - status
+        - message
+        - data
+    AssignmentsListResponseBody:
+      title: List of Assignments Response Body
+      type: object
+      description: Response body for a list of conference assignments.
+      format: Body
+      properties:
+        status:
+          title: Status
+          type: string
+          maxLength: 100
+        message:
+          title: Response Message
+          type: string
+          maxLength: 1000
+        data:
+          title: Assignment List
+          type: array
+          items:
+            $ref: '#/components/schemas/AssignmentResponseData'
+        links:
+          title: Hyperlinks
+          type: object
+      required:
+        - status
+        - message
+        - data
+    AssignmentCustomFieldsRequestBody:
+      title: Assignment Custom Fields Request Body
+      type: object
+      description: Request body for adding or modifying custom fields in a conference assignment.
+      format: requestBody
+      properties:
+        custom_fields:
+          title: Additional Custom Fields
+          type: object
+    AssignmentCustomFieldsResponseBody:
+      title: Assignment Custom Fields Response Body
+      type: object
+      description: Response body for a single assignment custom fields.
+      format: Body
+      properties:
+        status:
+          title: Status
+          type: string
+          maxLength: 100
+        message:
+          title: Response Message
+          type: string
+          maxLength: 1000
+        data:
+          title: Custom Fields Data
+          type: object
+          properties:
+            custom_fields:
+              title: Custom Fields
+              type: object
+        links:
+          title: Hyperlinks
+          type: object
+      required:
+        - status
+        - message
+        - data
+    AssignmentStateRequestBody:
+      title: Assignment State Modification Request Body
+      type: object
+      description: Request body for modifying the state of a conference assignment.
+      format: requestBody
+      properties:
+        state:
+          $ref: '#/components/schemas/StateEnum'
+      required:
+        - state
+    AssignmentStateResponseBody:
+      title: Assignment State Modification Response Body
+      type: object
+      description: Response body for modifying the state of a conference assignment.
+      format: Body
+      properties:
+        status:
+          title: Status
+          type: string
+          maxLength: 100
+          example: success
+        message:
+          title: Response Message
+          type: string
+        links:
+          type: object
+      required:
+        - status
+        - message
+    ErrorBody:
+      title: Error Response Body
+      description: General error response structure.
+      type: object
+      properties:
+        error:
+          title: General Error
+          type: object
+          properties:
+            status:
+              title: Error Status
+              type: string
+            message:
+              title: The Error Message
+              type: string
+            details:
+              title: Additional Error Details
+              type: object
+              properties:
+                field:
+                  title: Responsible Field
+                  type: string
+                reason:
+                  title: Reason of Error
+                  type: string
+      example:
+        error:
+          status: Failed
+          message: Error Message.
+          details:
+            field: responsible_field
+            reason: The reason that the error is raised.
+      required:
+        - error
+    DateTypeEnum:
+      title: Date Type Enumeration
+      description: Enumeration for date types.
+      enum:
+        - Normal
+        - Recurring
+    SeatTypeEnum:
+      title: Seat Type Enumeration
+      description: Enumeration for seat types.
+      enum:
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+    AccessTypeEnum:
+      title: Access Type Enumeration
+      description: Enumeration for access type.
+      enum:
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+    StateEnum:
+      title: Assignment State Enumeration
+      description: The state of the conference assignment.
+      enum:
+        - Pending
+        - Rejected
+        - Approved
+        - Canceled
+  responses:
+    AssignmentResponse:
+      description: Indicates successful creation, modification or retrieval of an assignment.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AssignmentResponseBody'
+          examples:
+            Normal Assignment:
+              $ref: '#/components/examples/NormalAssignmentResponseBodyExample'
+            Recurring Assignment:
+              $ref: '#/components/examples/RecurringAssignmentResponseBodyExample'
+    AssignmentsListResponse:
+      description: Indicates a successful retrieval of a list of assignments.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AssignmentsListResponseBody'
+          examples:
+            Assignment Lists:
+              $ref: '#/components/examples/AssignmentsListResponseBodyExample'
+    AssignmentsCustomFieldsResponse:
+      description: Indicates successful creation, modification or retrieval of the custom fields of an assignment.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AssignmentCustomFieldsResponseBody'
+          examples:
+            ExtraFields:
+              $ref: '#/components/examples/AssignmentCustomFieldsResponseBodyExample'
+    AssignmentStateResponse:
+      description: Indicates a successful modification of the assignment state.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AssignmentStateResponseBody'
+          examples:
+            Approval:
+              $ref: '#/components/examples/AssignmentStateApprovedResponseBodyExample'
+            Rejection:
+              $ref: '#/components/examples/AssignmentStateRejectedResponseBodyExample'
+    DeletionResponse:
+      description: Indicates a successful deletion.
+    BadRequest:
+      description: Bad request. Invalid or missing parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorBody'
+    Unauthorized:
+      description: Unauthorized. Authentication failure.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorBody'
+    Forbidden:
+      description: Forbidden. The user does not have permission to perform this action.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorBody'
+    NotFound:
+      description: Not Found. The requested resource is not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorBody'
+    Conflict:
+      description: Conflict. The request conflicts with the current state of the server.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorBody'
+    UnprocessableEntity:
+      description: Unprocessable Entity. The server understands the content type of the request entity but was unable to process the contained instructions.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorBody'
+    InternalServerError:
+      description: Internal Server Error. A generic error message returned when an unexpected condition was encountered.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorBody'
+    BadGateway:
+      description: Bad Gateway. The server, while acting as a gateway or proxy, received an invalid response from an inbound server it accessed while attempting to fulfill the request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorBody'
+    ServiceUnavailable:
+      description: Service Unavailable. The server is not ready to handle the request. Common causes include a temporary overloading or maintenance of the server.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorBody'
+    GatewayTimeOut:
+      description: Gateway Timeout. The server, while acting as a gateway or proxy, did not receive a timely response from an upstream server it needed to access in order to complete the request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorBody'
+  parameters:
+    ProfileId:
+      name: profile_id
+      description: ID of the profile associated with the assignment.
+      in: path
+      required: true
+      schema:
+        title: Profile ID
+        type: integer
+        format: ID
+    AssignmentId:
+      name: assignment_id
+      description: ID of the assignment to be referenced.
+      in: path
+      required: true
+      schema:
+        title: Assignment ID
+        type: integer
+        format: ID
+  requestBodies:
+    AssignmentRequestBody:
+      description: Request body for creating and modifying a new conference assignment.
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AssignmentRequestBody'
+          examples:
+            Normal:
+              $ref: '#/components/examples/NormalAssignmentRequestBodyExample'
+            Recurring:
+              $ref: '#/components/examples/RecurringAssignmentRequestBodyExample'
+    AssignmentStateRequestBody:
+      description: Request body for modifying the state of an assignment.
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AssignmentStateRequestBody'
+          examples:
+            Approval:
+              $ref: '#/components/examples/AssignmentStateApprovedRequestBodyExample'
+            Rejection:
+              $ref: '#/components/examples/AssignmentStateRejectedRequestBodyExample'
+    AssignmentCustomFieldsRequestBody:
+      description: Request body for adding or modifying extra fields of an assignment.
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AssignmentCustomFieldsRequestBody'
+            examples:
+              ExtraFields:
+                $ref: '#/components/examples/AssignmentCustomFieldsRequestBodyExample'
+  examples:
+    NormalAssignmentRequestBodyExample:
+      summary: Normal Assignment
+      description: An example for normal assignment request bodies. 
+        `week_days`, `start_hour`, and `end_hour` should be null when `date_type` is set to normal.
+      value:
+        conference_name: Conference name
+        conference_description: Conference description
+        support_service: false
+        record_service: false
+        date_type: Normal
+        limit: 3000
+        seat_types:
+          - 1
+          - 4
+        start_time: 1708589035
+        end_time: 1708592318
+        week_days: null
+        start_hour: null
+        end_hour: null
+    RecurringAssignmentRequestBodyExample:
+      summary: Recurring Assignment
+      description:  An example for recurring assignment request bodies. 
+        `week_days`, `start_hour`, and `end_hour` are required fields when `date_type` is set to recurring.
+      value:
+        conference_name: Conference name
+        conference_description: Conference description
+        support_service: true
+        record_service: false
+        date_type: Recurring
+        limit: 1000
+        seat_types:
+          - 2
+        start_time: 1708589035
+        end_time: 1708592318
+        week_days:
+          - 1
+          - 2
+        start_hour: 8
+        end_hour: 12
+    AssignmentStateApprovedRequestBodyExample:
+      summary: Assignment State Approval
+      description: An example for assignment approval request bodies.
+      value:
+        state: Approved
+    AssignmentStateRejectedRequestBodyExample:
+      summary: Assignment State Rejection
+      description: An example for assignment rejection request bodies.
+      value:
+        state: Rejected
+    NormalAssignmentResponseBodyExample:
+      summary: Normal Assignment
+      description: An example for normal assignment response bodies.
+      value:
+        status: success
+        message: Successful Operation.
+        data:
+          id: 213094
+          created_by: 58
+          updated_by: 121
+          conference_name: Conference name
+          conference_description: Conference description
+          support_service: false
+          record_service: false
+          date_type: Normal
+          limit: 3000
+          seat_types:
+            - 1
+            - 4
+          start_time: 1708589035
+          end_time: 1708592318
+          week_days: null
+          start_hour: null
+          end_hour: null
+          state: Pending
+          created_at: 1708589000
+          updated_at: 1708589030
+        links:
+          self: /profiles/20/assignments/213094
+    RecurringAssignmentResponseBodyExample:
+      summary: Recurring Assignment
+      description: An example for recurring assignment response bodies.
+      value:
+        status: success
+        message: Successful Operation.
+        data:
+          id: 4052
+          created_by: 123
+          updated_by: 37
+          conference_name: Conference name
+          conference_description: Conference description
+          support_service: true
+          record_service: false
+          date_type: Recurring
+          limit: 1000
+          seat_types:
+            - 2
+          start_time: 1708589035
+          end_time: 1708592318
+          week_days:
+            - 1
+            - 2
+          start_hour: 8
+          end_hour: 12
+          state: Pending
+          created_at: 17085328193
+          updated_at: 17085482918
+        links:
+          self: /profiles/20/assignments/4052
+    AssignmentsListResponseBodyExample:
+      summary: Assignments List
+      description: An example for assignments list response bodies.
+      value:
+        status: success
+        message: Successful Operation.
+        data:
+          - id: 213094
+            created_by: 58
+            updated_by: 121
+            conference_name: Conference name
+            conference_description: Conference description
+            support_service: false
+            record_service: false
+            date_type: Normal
+            limit: 3000
+            seat_types:
+              - 1
+              - 4
+            start_time: 1708589035
+            end_time: 1708592318
+            week_days: null
+            start_hour: null
+            end_hour: null
+            state: Pending
+            created_at: 1708589000
+            updated_at: 1708589030
+          - id: 4052
+            created_by: 123
+            updated_by: 37
+            conference_name: Conference name
+            conference_description: Conference description
+            support_service: true
+            record_service: false
+            date_type: Recurring
+            limit: 1000
+            seat_types:
+              - 2
+            start_time: 1708589035
+            end_time: 1708592318
+            week_days:
+              - 1
+              - 2
+            start_hour: 8
+            end_hour: 12
+            state: Pending
+            created_at: 17085328193
+            updated_at: 17085482918
+            links:
+              self:
+                - /profiles/20/assignments/213094
+                - /profiles/20/assignments/4052
+    AssignmentCustomFieldsRequestBodyExample:
+      summary: Assignment Custom Fields
+      description: An example of providing an assignment with custom fields.
+      value:
+        custom_fields:
+          speaker_bio: "A seasoned speaker with expertise in the field."
+          presentation_topic: "Revolutionizing AI in Healthcare"
+          additional_notes: "Ensure to engage the audience with interactive elements."
+    AssignmentCustomFieldsResponseBodyExample:
+      summary: Assignment Extra Fields
+      description: An example of returning of custom fields of an assignment.
+      value:
+        status: success
+        message: Successful Operation.
+        data:
+          custom_fields:
+            speaker_bio: "A seasoned speaker with expertise in the field."
+            presentation_topic: "Revolutionizing AI in Healthcare"
+            additional_notes: "Ensure to engage the audience with interactive elements."
+        links:
+          assignment: /profiles/20/assignments/213094
+    AssignmentStateApprovedResponseBodyExample:
+      summary: Assignment State Approved
+      description: An example for assignment approval response bodies.
+      value:
+        status: success
+        message: The assignment has been successfully approved.
+    AssignmentStateRejectedResponseBodyExample:
+      summary: Assignment State Rejected
+      description: An example for assignment rejection response bodies.
+      value:
+        status: success
+        message: The assignment has been successfully rejected.
