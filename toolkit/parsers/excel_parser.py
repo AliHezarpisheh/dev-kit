@@ -1,10 +1,14 @@
 """Contains the ExcelParser class for parsing Excel files."""
 
+import logging
 from typing import Any
 
 import pandas as pd
 
 from .base import Parser
+from .helpers.exceptions import ExcelParseError
+
+logger = logging.getLogger(__name__)
 
 
 class ExcelParser(Parser):
@@ -22,7 +26,7 @@ class ExcelParser(Parser):
         try:
             content = pd.read_excel(self.file_path, sheet_name=None)
             return content
-        except FileNotFoundError:
-            print(f"This path is unreachable: `{self.file_path}`!")
         except pd.errors.ParserError:
-            print(f"Error parsing Excel file: `{self.file_path}`!")
+            msg = f"Error parsing Excel file: `{self.file_path}`!"
+            logger.error(msg, exc_info=True)
+            raise ExcelParseError(msg)

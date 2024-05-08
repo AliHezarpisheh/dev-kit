@@ -5,6 +5,7 @@ from unittest.mock import mock_open, patch
 import pytest
 
 from toolkit.parsers import TOMLParser
+from toolkit.parsers.helpers.exceptions import TOMLParseError
 
 SAMPLE_TOML_CONTENT = """
 [info]
@@ -30,22 +31,10 @@ def test_read(toml_parser: TOMLParser) -> None:
     assert content == {"info": {"name": "John", "age": 30}}
 
 
-def test_read_not_found_toml_file(
-    toml_parser: TOMLParser, capsys: pytest.CaptureFixture[str]
-) -> None:
-    """Test reading a non-existing file."""
-    with patch("pathlib.Path.open") as mock_open:
-        mock_open.side_effect = FileNotFoundError
-        toml_parser.read()
-
-    assert capsys.readouterr().out == "This path is unreachable: `test.toml`!\n"
-
-
 def test_read_invalid_syntax_toml_file(
-    toml_parser: TOMLParser, capsys: pytest.CaptureFixture[str]
+    toml_parser: TOMLParser,
 ) -> None:
     """Test reading an invalid TOML file."""
     with patch("pathlib.Path.open", mock_open(read_data="invalid syntax")):
-        toml_parser.read()
-
-    assert capsys.readouterr().out == "Syntax Error in: `test.toml`!\n"
+        with pytest.raises(TOMLParseError, match="Syntax Error in: `test.toml`!"):
+            toml_parser.read()
