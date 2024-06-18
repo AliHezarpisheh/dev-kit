@@ -1,0 +1,131 @@
+Project vc_user {
+  database: 'PostgreSQL'
+  Note: 'Applicatoin Note: Write a desciption here.'
+}
+
+
+/////////////////////////
+//  App Name   //
+///////////////////////
+
+
+TableGroup user {
+  user.user
+}
+
+
+Table user.user {
+  id integer [
+    pk,
+    increment,
+    unique,
+    not null,
+    note: 'Unique identifier for each user.'
+  ]
+  username varchar(64) [
+    unique,
+    not null,
+    note: 'Unique username for identification purposes.'
+  ]
+  display_name varchar(256) [
+    note: 'Display name shown to other users.'
+  ]
+  role user.role [
+    not null,
+    note: 'Role of the user in the conference (e.g., Host or Guest).'
+  ]
+  user_id varchar(256) [
+    note: 'Identifier linking to user data if applicable.'
+  ]
+  tracking_ids array [
+    default: "Empty Array",
+    note: 'Array of tracking IDs for user activity monitoring.'
+  ]
+  created_by varchar(256) [
+    note: 'ID of the user who created the user record.'
+  ]
+  updated_by varchar(256) [
+    note: 'ID of the user who last updated the user record.'
+  ]
+  created_at datetime [
+    default: `now()`,
+    not null,
+    note: 'Timestamp indicating when the user record was created.'
+  ]
+  updated_at datetime [
+    note: 'Timestamp indicating when the user record was last updated.'
+  ]
+}
+
+
+Table user.attributes {
+  id integer [
+    pk,
+    increment,
+    unique,
+    not null,
+    note: 'Unique identifier for each attribute.'
+  ]
+  name varchar(256) [
+    unique,
+    not null,
+    note: 'Name of the attribute.'
+  ]
+  created_by varchar(256) [
+    note: 'ID of the user who created the attribute record.'
+  ]
+  updated_by varchar(256) [
+    note: 'ID of the user who last updated the attribute record.'
+  ]
+  created_at datetime [
+    default: `now()`,
+    not null,
+    note: 'Timestamp indicating when the attribute record was created.'
+  ]
+  updated_at datetime [
+    note: 'Timestamp indicating when the attribute record was last updated.'
+  ]
+}
+
+
+Table users.values {
+  id integer [
+    pk,
+    increment,
+    unique,
+    not null,
+    note: 'Unique identifier for each user-attribute association.'
+  ]
+  user_id integer [
+    ref: > user.user.id,
+    note: 'ID of the user to which the attribute belongs.'
+  ]
+  attribute_id integer [
+    ref: > user.attributes.id,
+    note: 'ID of the attribute associated with the user.'
+  ]
+  value varchar(256) [
+    not null,
+    note: 'Value of the attribute for the user.'
+  ]
+  created_by varchar(256) [
+    note: 'ID of the user who created the attribute value record.'
+  ]
+  updated_by varchar(256) [
+    note: 'ID of the user who last updated the attribute value record.'
+  ]
+  created_at datetime [
+    default: `now()`,
+    not null,
+    note: 'Timestamp indicating when the attribute value record was created.'
+  ]
+  updated_at datetime [
+    note: 'Timestamp indicating when the attribute value record was last updated.'
+  ]
+}
+
+
+enum user.role {
+  "Host" [note: "The primary role responsible for managing the room and its activities."]
+  "Guest" [note: "A user with limited privileges, typically attending without administrative responsibilities."]
+}

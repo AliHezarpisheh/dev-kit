@@ -35,6 +35,8 @@ __pycache__/
 .Python
 env/
 .env
+.env.production
+.env.development
 venv/
 .venv
 build/
@@ -97,12 +99,6 @@ media/upload/**
 ### Database ###
 db.sqlite3
 
-### Docker ###
-.dockerignore
-entrypoint.sh
-Dockerfile
-docker-compose.yml
-
 ### Docs ###
 !docs/**
 
@@ -114,3 +110,6 @@ artifacts/
 logs/
 .ruff_cache
 .mypy_cache
+
+### Custom files for this specific project ###
+run.py
