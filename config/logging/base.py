@@ -23,9 +23,7 @@ class LoggingConfig:
         logging.config.dictConfig(logging_config)
 
     @staticmethod
-    def validate_and_create_dirs(
-        handlers: dict[str, dict[str, Any]]
-    ) -> list[Path]:
+    def validate_and_create_dirs(handlers: dict[str, dict[str, Any]]) -> list[Path]:
         """
         Validate the configuration and create directories specified in handlers.
 
