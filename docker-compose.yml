@@ -2,7 +2,7 @@
 
 services:
   service-name:
-    container_name: vc-participant
+    container_name: app
     build:
       context: .
       dockerfile: Dockerfile
@@ -12,13 +12,13 @@ services:
     env_file:
       - config/environments/.env.production
     depends_on:
-      - vc-participant-db
+      - app-db
     restart: always
     networks:
-      - vc-participant-network
+      - app-network
 
-  vc-participant-db:
-    container_name: vc-participant-db
+  app-db:
+    container_name: app-db
     image: postgres:16.3
     ports:
       - 5070:5432
@@ -29,7 +29,7 @@ services:
       - ./docs/database/create_db.sql:/docker-entrypoint-initdb.d/create_db.sql
     restart: always
     networks:
-      - vc-participant-network
+      - app-network
 
 volumes:
   postgres_data:
