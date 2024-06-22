@@ -7,3 +7,7 @@ class BaseTokenError(Exception):
 
 class InvalidTokenError(BaseTokenError):
     """Exception raised when the provided token is invalid."""
+
+
+class DoesNotExistError(Exception):
+    """Exception raised when a requested resource does not exist."""
