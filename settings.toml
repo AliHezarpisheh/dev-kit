@@ -1,0 +1,33 @@
+# These are just placeholders.
+
+[openapi]
+title = "Service API"
+version = "1.0.0"
+description = """
+Write the description here.
+"""
+
+[openapi.contact]
+name = "Mock API Support Team"
+url = "https://mockplatform.example"
+email = "support@mockplatform.example"
+
+[openapi.license]
+name = "MIT License"
+url = "https://opensource.org/licenses/MIT"
+
+[openapi.external_docs]
+description = "Access the comprehensive documentation for the Service API."
+url = "https://wiki.mockplatform.example/display/dev/Mock+Shop+Project"
+
+[[openapi.tags]]
+name = "Users"
+description = "Operations related to user management"
+
+[[openapi.tags]]
+name = "Products"
+description = "Operations related to products management"
+
+[[openapi.tags]]
+name = "Subscription"
+description = "Operations related to subscription management"
