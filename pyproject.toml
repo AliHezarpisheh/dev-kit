@@ -100,5 +100,6 @@ xfail_strict = true
 [tool.coverage.run]
 parallel = true
 source = [
+    "app",
     "toolkit",
 ]
