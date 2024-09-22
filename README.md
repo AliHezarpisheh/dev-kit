@@ -1,14 +1,14 @@
-# PythonDevKit
+# FastAPI Kit
 
-Welcome to PythonDevKit, a personal repository for storing essential software components and configurations for my python projects.
+Welcome to FastAPI kit, a personal repository for storing essential software components and configurations for my fastapi projects.
 
 ## Introduction
 
-PythonDevKit serves as a centralized hub for storing common configurations, utilities, and documentation essential for efficient python based backend development workflows.
+FastAPI kit serves as a centralized hub for storing common configurations, utilities, and documentation essential for efficient fastapi based backend development workflows.
 
 ## Purpose
 
-PythonDevKit houses various components, including:
+FastAPI kit houses various components, including:
 
 - Common configurations (e.g., pytest, database settings)
 - Sample documentation (e.g., OpenAPI specifications)
@@ -17,11 +17,11 @@ PythonDevKit houses various components, including:
 
 ## Usage
 
-Feel free to leverage the resources within this repository for your projects. Clone or fork this repository and customize it to suit your specific requirements. Whether you're setting up a new project or enhancing an existing one, PythonDevKit offers a foundation to accelerate your development efforts.
+Feel free to leverage the resources within this repository for your projects. Clone or fork this repository and customize it to suit your specific requirements. Whether you're setting up a new project or enhancing an existing one, FastAPI kit offers a foundation to accelerate your development efforts.
 
 ## Contributing
 
-While PythonDevKit is primarily for personal use, contributions are welcome! If you have suggestions for improvements or new features, feel free to open an issue or submit a pull request. Please ensure that your contributions align with the purpose and scope of this repository.
+While FastAPI kit is primarily for personal use, contributions are welcome! If you have suggestions for improvements or new features, feel free to open an issue or submit a pull request. Please ensure that your contributions align with the purpose and scope of this repository.
 
 ## License
 
