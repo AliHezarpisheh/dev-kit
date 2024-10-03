@@ -35,5 +35,5 @@ volumes:
   postgres_data:
 
 networks:
-  custom-network:
+  app-network:
     driver: bridge
