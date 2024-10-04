@@ -147,6 +147,9 @@
 
 # Environments
 **/.env
+**/.env.development
+**/.env.production
+**/.env.testing
 **/.venv
 **/env/
 **/venv/
