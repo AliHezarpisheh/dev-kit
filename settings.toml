@@ -1,5 +1,7 @@
 # These are just placeholders.
 
+env = "development"
+
 [openapi]
 title = "Service API"
 version = "1.0.0"
