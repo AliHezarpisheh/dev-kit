@@ -1,7 +1,8 @@
 """Module for handling all the settings in the application."""
 
 import os
-from typing import Type
+from functools import lru_cache
+from typing import Literal, Type
 
 from pydantic import AnyHttpUrl, Field
 from pydantic_settings import (
@@ -30,7 +31,7 @@ class Settings(BaseSettings):
     """
 
     # TOML Settings
-    env: str
+    env: Literal["development", "production", "testing"]
     openapi: OpenAPISettings
 
     # .env Settings
@@ -58,7 +59,7 @@ class Settings(BaseSettings):
         dotenv_settings: PydanticBaseSettingsSource,
         file_secret_settings: PydanticBaseSettingsSource,
     ) -> tuple[PydanticBaseSettingsSource, ...]:
-        """Customise the settings sources."""
+        """Customize the settings sources."""
         return (
             init_settings,  # Initial settings
             TomlConfigSettingsSource(settings_cls),  # Read from .toml file
@@ -68,6 +69,7 @@ class Settings(BaseSettings):
         )
 
 
+@lru_cache
 def get_settings() -> Settings:
     """Create a new Settings object."""
     return Settings()  # type: ignore
