@@ -1,1 +1,3 @@
-from .api_client import AsyncAPIClient as AsyncAPIClient
+from .api_client import AsyncAPIClient
+
+__all__ = ["AsyncAPIClient"]
